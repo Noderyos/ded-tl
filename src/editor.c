@@ -335,10 +335,21 @@ void editor_render(SDL_Window *window, Free_Glyph_Atlas *atlas, Simple_Renderer 
     // Render text
     {
         simple_renderer_set_shader(sr, SHADER_FOR_TEXT);
+        int idx = -1;
         for (size_t i = 0; i < editor->tokens.count; ++i) {
             Token token = editor->tokens.items[i];
             Vec2f pos = token.position;
             Vec4f color = vec4fs(1);
+            if(token.text_len == 4 && memcmp(token.text, "case", 4) == 0) {
+                idx = 0;
+            }else {
+                if (token.text_len == 4 && memcmp(token.text, "Halt", 4) == 0) {
+                    color = hex_to_vec4f(0xF43841FF);  // Custom color for Halt
+                } else {
+                    if (idx == 0 || idx == 5) color = hex_to_vec4f(0x73c936ff); // Color for states
+                }
+                idx++;
+            }
             switch (token.kind) {
             case TOKEN_KEYWORD:
                 color = hex_to_vec4f(0xFFDD33FF);
