@@ -340,17 +340,15 @@ void editor_render(SDL_Window *window, Free_Glyph_Atlas *atlas, Simple_Renderer 
             Vec2f pos = token.position;
             Vec4f color = vec4fs(1);
             switch (token.kind) {
-            case TOKEN_PREPROC:
-                color = hex_to_vec4f(0x95A99FFF);
-                break;
             case TOKEN_KEYWORD:
                 color = hex_to_vec4f(0xFFDD33FF);
                 break;
-            case TOKEN_COMMENT:
+            case TOKEN_OPEN_CURLY:
+            case TOKEN_CLOSE_CURLY:
+            case TOKEN_DASH:
+            case TOKEN_GREATER:
+            case TOKEN_LOWER:
                 color = hex_to_vec4f(0xCC8C3CFF);
-                break;
-            case TOKEN_STRING:
-                color = hex_to_vec4f(0x73c936ff);
                 break;
             default:
             {}

@@ -7,17 +7,14 @@
 
 typedef enum {
     TOKEN_END = 0,
-    TOKEN_INVALID,
-    TOKEN_PREPROC,
     TOKEN_SYMBOL,
-    TOKEN_OPEN_PAREN,
-    TOKEN_CLOSE_PAREN,
+    TOKEN_KEYWORD,
+    TOKEN_GREATER,
+    TOKEN_LOWER,
+    TOKEN_DASH,
     TOKEN_OPEN_CURLY,
     TOKEN_CLOSE_CURLY,
-    TOKEN_SEMICOLON,
-    TOKEN_KEYWORD,
-    TOKEN_COMMENT,
-    TOKEN_STRING,
+    TOKEN_INVALID
 } Token_Kind;
 
 const char *token_kind_name(Token_Kind kind);
